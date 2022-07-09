@@ -1,21 +1,28 @@
 import React, {useState, useEffect} from 'react';
-// import { useNavigate } from 'react-router-dom'
-// import {auth, logInWithEmailAndPassword } from '../config'
-// import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  auth,
+  registerWithEmailAndPassword,
+} from "../config";
 import BackgroundLayout from "../components/backgroundlayout";
 
-const Login = () => {
-//   const [ email, setEmail ] = useState("");
-//   const [ password, setPassword ] = useState("");
-//   const [user, loading, error] = useAuthState(auth);
-//   const navigate = useNavigate();
 
-//  useEffect(() => {
-//     if(loading){
-//       return;
-//     }
-//     if(user) navigate("/manage-profiles");
-//  }, [user, loading]);
+
+const Register = () => {
+  const [ email, setEmail ] = useState("");
+  const [ password, setPassword ] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+  const history = useNavigate();
+  // const navigate = useNavigate();
+  const register = () =>{
+    registerWithEmailAndPassword(email, password);
+  };
+
+ useEffect(() => {
+    if(loading) return;
+    if(user) history.replace("/manage-profiles");
+ }, [user, loading]);
 
   return(
     <div>
@@ -28,20 +35,18 @@ const Login = () => {
             type="email" 
             placeholder="Email or phone number" 
             className="w-full py-3 rounded-lg px-3 bg-gray-700"
-            // value={email}
-            // onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             />
             <input 
             name="password" 
             type="password" 
             placeholder="Password" 
             className="w-full py-3 px-3 rounded-lg text-gray-500"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             />
-            <div 
-            // onClick={logInWithEmailAndPassword} 
-            className="bg-primary text-center text-lg font-medium rounded-lg py-3 cursor-pointer ">Sign In</div>
+            <div onClick={register} className="bg-primary text-center text-lg font-medium rounded-lg py-3 cursor-pointer ">Sign In</div>
             <div>
 
             </div>
@@ -55,4 +60,4 @@ const Login = () => {
   )
 }
 
-export default Login;
+export default Register;
