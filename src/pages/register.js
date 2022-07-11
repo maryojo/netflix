@@ -15,8 +15,8 @@ const Register = () => {
   const handleSubmit = async (e) =>{
       e.preventDefault();
       try{
-        await register(email, password);
-        navigate('/manage-profiles');
+        // await register(email, password);
+        navigate('/login');
       } catch(error){
         console.log(error);
       }
