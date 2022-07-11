@@ -23,60 +23,55 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = { 
-  apiKey: "AIzaSyCbwGkpP14BexZMoP1gqvSbLZSfYigjUvfcXkroScK",
-   authDomain: "netflix-clone-c7b22.firebaseapp.com",
-    projectId: "netflix-clone-c7b22",
-    storageBucket: "netflix-clone-c7b22.appspot.com",
-     messagingSenderId: "826536555534",
-      appId: "1:826536555534:web:4cd826c38455310028385f"
-    
+  apiKey: process.env.REACT_APP_apiKey,
+   authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+     messagingSenderId: process.env.REACT_APP_messagingSenderId,
+      appId: process.env.REACT_APP_appId,
     };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+// const db = getFirestore(app);
 
 // connectAuthEmulator(auth, "https://localhost:9099");
 
 
+    // const logInWithEmailAndPassword = async (email, password) => {
+    //   try {
+    //     let userCred = await signInWithEmailAndPassword(auth, email, password);
+    //     console.log(userCred.user);
+    //   } catch (err) {
+    //     console.error(err);
+    //     alert(err.message);
+    //   }
+    // };
 
+    // const registerWithEmailAndPassword = async (name, email, password) => {
+    //   try {
+    //     const res = await createUserWithEmailAndPassword(auth, email, password);
+    //     const user = res.user;
+    //     await addDoc(collection(db, "users"), {
+    //       uid: user.uid,
+    //       name,
+    //       authProvider: "local",
+    //       email,
+    //     });
+    //   } catch (err) {
+    //     console.error(err);
+    //     alert(err.message);
+    //   }
+    // };
 
-
-
-    const logInWithEmailAndPassword = async (email, password) => {
-      try {
-        let userCred = await signInWithEmailAndPassword(auth, email, password);
-        console.log(userCred.user);
-      } catch (err) {
-        console.error(err);
-        alert(err.message);
-      }
-    };
-
-    const registerWithEmailAndPassword = async (name, email, password) => {
-      try {
-        const res = await createUserWithEmailAndPassword(auth, email, password);
-        const user = res.user;
-        await addDoc(collection(db, "users"), {
-          uid: user.uid,
-          name,
-          authProvider: "local",
-          email,
-        });
-      } catch (err) {
-        console.error(err);
-        alert(err.message);
-      }
-    };
-
-    const logout = () => {
-      signOut(auth);
-    };
-    export {
-      auth,
-      db,
-      logInWithEmailAndPassword,
-      registerWithEmailAndPassword,
-      logout,
-    };
+    // const logout = () => {
+    //   signOut(auth);
+    // };
+    // export {
+    //   auth,
+    //   db,
+    //   logInWithEmailAndPassword,
+    //   registerWithEmailAndPassword,
+    //   logout,
+    // };

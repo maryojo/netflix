@@ -16,9 +16,7 @@ function Banner() {
         </div>
         </div>
       {/* </div> */}
-      <Link to="/login">
-      <div className='px-6 py-2 z-10 absolute right-10 top-5 cursor-pointer text-white rounded bg-primary'>Sign in</div>
-      </Link>
+     
      
     {/* // </div> */}
     </BackgroundLayout>

@@ -1,11 +1,14 @@
 import Pages from "./pages";
+import {AuthContextProvider } from './context/AuthContext'
 
 
 function App() {
   return (
-    <div className="App bg-black">
+    <AuthContextProvider>
+      <div className="App bg-black">
       <Pages/>
     </div>
+    </AuthContextProvider>
   );
 }
 

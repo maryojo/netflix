@@ -17,7 +17,11 @@
   }
   
   h3{
-    @apply text-2xl leading-normal;
+    @apply text-2xl leading-normal md:text-4xl;
+  }
+
+  h4{
+    @apply md:text-xl font-semibold;
   }
 
   p{

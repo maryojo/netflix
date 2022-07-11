@@ -9,7 +9,7 @@ const ProfileCard = ({src, name, link}) =>{
         <img alt="" src={src} className="bg-contain bg-center"/>
       </div>
       {/* </Link> */}
-      <p className="text-center">{name}</p>
+      <p className="">{name}</p>
     </div>
   )
 }
