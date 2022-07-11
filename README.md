@@ -1,6 +1,7 @@
 # Netflix clone
 
 Live [here](sprightly-torrone-a6b3ec.netlify.app) 
+Login with email: test@mail.com and password: password
 
 
 # Getting Started with Create React App
