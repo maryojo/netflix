@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { auth } from '../config'
+import { auth, db } from '../config'
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
   // connectAuthEmulator,
 } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
@@ -19,7 +20,10 @@ export function AuthContextProvider({children}){
     };
 
     const register = (email, password) => {
-      return  createUserWithEmailAndPassword(auth, email, password);
+      createUserWithEmailAndPassword(auth, email, password);
+      setDoc(doc(db, 'users', email), {
+        savedShows : []
+      })
     };
 
     const logOut = () => {

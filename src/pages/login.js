@@ -9,6 +9,7 @@ import BackgroundLayout from "../components/backgroundlayout";
 const Login = () => {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
+  const [error, setError ] = useState("");
   const { user, logIn } = UserAuth();
   const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ const Login = () => {
         navigate("/manage-profiles");
       } catch(error){
         console.log(error);
+        setError(error.message);
       }
   }
   
@@ -29,6 +31,9 @@ const Login = () => {
         <div className="absolute p-20 bg-black bg-opacity-80 w-4/12 z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <h2 className="font-semibold text-3xl mb-7">Sign In</h2>
           <div className="space-y-3">
+          <div>
+            {error ? <p>{error}</p> : null}
+          </div>
             <input 
             name="email" 
             type="email" 
